@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Пленумы Верховного Суда</title>
+<meta name="theme-color" content="#0b2a63">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Пленумы">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="mark" aria-hidden="true">§</div>
+    <div>
+      <h1>Пленумы Верховного Суда</h1>
+      <p>СССР и Российской Федерации · действующие постановления</p>
+    </div>
+  </div>
+  <div class="tricolor" aria-hidden="true"><i></i><i></i><i></i></div>
+</header>
+
+<main>
+  <section id="listView">
+    <form class="panel" id="filters" role="search" onsubmit="return false">
+      <label class="wide">Поиск по тексту
+        <input id="q" type="search" placeholder="например: особая жестокость, «явка с повинной»" autocomplete="off" enterkeyhint="search">
+      </label>
+      <label>Статья УК
+        <input id="art" inputmode="decimal" placeholder="105 или 158.1" autocomplete="off">
+      </label>
+      <label>Кодекс
+        <select id="code">
+          <option value="rf">УК РФ</option>
+          <option value="rsfsr">УК РСФСР</option>
+          <option value="any">Любой</option>
+        </select>
+      </label>
+      <label>Дата с
+        <input id="from" type="date">
+      </label>
+      <label>Дата по
+        <input id="to" type="date">
+      </label>
+      <label>Орган
+        <select id="organ">
+          <option value="">СССР и РФ</option>
+          <option value="СССР">Верховный Суд СССР</option>
+          <option value="РФ">Верховный Суд РФ</option>
+        </select>
+      </label>
+      <label>Порядок
+        <select id="sort">
+          <option value="rel">По совпадению</option>
+          <option value="new">Сначала новые</option>
+          <option value="old">Сначала старые</option>
+        </select>
+      </label>
+      <button type="button" id="reset" class="ghost">Сбросить</button>
+    </form>
+    <p id="count" class="count" aria-live="polite"></p>
+    <ol id="results" class="results"></ol>
+  </section>
+
+  <article id="docView" hidden>
+    <div class="docbar">
+      <button type="button" id="back" class="ghost">← К списку</button>
+      <button type="button" id="prevHit" class="ghost" hidden>↑</button>
+      <button type="button" id="nextHit" class="ghost" hidden>↓</button>
+      <span id="hitInfo" class="hit-info"></span>
+    </div>
+    <div id="docBody"></div>
+  </article>
+</main>
+
+<footer>Справочное приложение. Работает без интернета. Тексты пленумов следует сверять с официальными источниками.</footer>
+
+<script src="data/plenums.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
